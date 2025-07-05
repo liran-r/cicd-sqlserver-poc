@@ -1,3 +1,8 @@
+--liquibase formatted sql
+-- ----------------------------------------------------------------------------
+-- Never edit an already-executed changeset; always append another one.
+-- ----------------------------------------------------------------------------
+
 --changeset you:1
 CREATE TABLE users (
   id   INT PRIMARY KEY,
@@ -6,5 +11,5 @@ CREATE TABLE users (
 );
 
 --changeset you:2
-ALTER TABLE dbo.users
-  ADD signup_date DATETIME DEFAULT (GETDATE()) NOT NULL;
+ALTER TABLE users
+  ADD signup_date DATETIME DEFAULT(GETDATE()) NOT NULL;
