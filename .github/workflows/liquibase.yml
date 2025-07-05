@@ -1,0 +1,19 @@
+name: Liquibase Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: liquibase/liquibase-github-actions/update@v1
+        with:
+          changeLogFile: liquibase/changelog.sql
+          url: jdbc:sqlserver://${{ secrets.DB_HOST }}:1433;databaseName=${{ secrets.DB_NAME }};encrypt=true;trustServerCertificate=true
+          username: ${{ secrets.DB_USER }}
+          password: ${{ secrets.DB_PASS }}
