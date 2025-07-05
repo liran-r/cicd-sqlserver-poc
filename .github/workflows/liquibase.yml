@@ -11,9 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: liquibase/liquibase-github-actions/update@v4.32.0
+      - uses: liquibase-github-actions/update@v4.32.0
         with:
-          changeLogFile: liquibase/changelog.sql
+          changelogFile: liquibase/changelog.sql
           url: jdbc:sqlserver://${{ secrets.DB_HOST }}:1433;databaseName=${{ secrets.DB_NAME }};encrypt=true;trustServerCertificate=true
           username: ${{ secrets.DB_USER }}
           password: ${{ secrets.DB_PASS }}
